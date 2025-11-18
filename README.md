@@ -23,3 +23,9 @@ Basic layout structure
 Limited sections (only home page implemented)
 
 Traditional color scheme
+
+#git commands
+
+git add .
+git commit -m "update"
+git push origin main
