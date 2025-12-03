@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Productivity Dashboard</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1><i class="fas fa-chart-line"></i> Productivity Dashboard</h1>
+        <p>Track your tasks, monitor progress, and boost your productivity</p>
+      </header>
+
+      <div class="dashboard">
+        <!-- Left Column: Task Manager -->
+        <div class="task-manager">
+          <h2><i class="fas fa-tasks"></i> Task Manager</h2>
+
+          <!-- Task Input -->
+          <div class="task-input-container">
+            <input type="text" id="taskInput" placeholder="Add a new task..." />
+            <button id="addTaskBtn">
+              <i class="fas fa-plus"></i> Add Task
+            </button>
+          </div>
+
+          <!-- Priority Selector -->
+          <div class="priority-buttons">
+            <button class="priority-btn low" data-priority="low">
+              <i class="fas fa-arrow-down"></i> Low Priority
+            </button>
+            <button class="priority-btn medium" data-priority="medium">
+              <i class="fas fa-equals"></i> Medium Priority
+            </button>
+            <button class="priority-btn high" data-priority="high">
+              <i class="fas fa-arrow-up"></i> High Priority
+            </button>
+          </div>
+
+          <!-- Task Filters -->
+          <div class="task-filters">
+            <button class="filter-btn active" data-filter="all">
+              All Tasks
+            </button>
+            <button class="filter-btn" data-filter="active">Active</button>
+            <button class="filter-btn" data-filter="completed">
+              Completed
+            </button>
+          </div>
+
+          <!-- Task List -->
+          <ul class="task-list" id="taskList">
+            <!-- Tasks will be added here dynamically -->
+            <div class="empty-state" id="emptyState">
+              <i class="fas fa-clipboard-list"></i>
+              <p>No tasks yet. Add your first task above!</p>
+            </div>
+          </ul>
+        </div>
+
+        <!-- Right Column: Analytics Panel -->
+        <div class="analytics-panel">
+          <!-- Statistics Card -->
+          <div class="stats-card">
+            <h3><i class="fas fa-chart-bar"></i> Today's Stats</h3>
+            <div class="stats-grid">
+              <div class="stat-item">
+                <div class="stat-number" id="totalTasks">0</div>
+                <div class="stat-label">Total Tasks</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number" id="completedTasks">0</div>
+                <div class="stat-label">Completed</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number" id="pendingTasks">0</div>
+                <div class="stat-label">Pending</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number" id="highPriority">0</div>
+                <div class="stat-label">High Priority</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Progress Card -->
+          <div class="progress-card">
+            <h3><i class="fas fa-chart-pie"></i> Progress Overview</h3>
+            <div class="progress-container">
+              <div class="progress-bar">
+                <div
+                  class="progress-fill"
+                  id="progressFill"
+                  style="width: 0%"
+                ></div>
+              </div>
+              <div class="progress-text">
+                <span>Completion Rate</span>
+                <span id="completionRate">0%</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Chart Card -->
+          <div class="chart-card">
+            <h3><i class="fas fa-chart-line"></i> Priority Distribution</h3>
+            <div class="chart-container">
+              <canvas id="priorityChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Timer Section -->
+      <div class="timer-section">
+        <h3><i class="fas fa-clock"></i> Focus Timer (Pomodoro)</h3>
+        <div class="timer-display" id="timerDisplay">25:00</div>
+        <div class="timer-controls">
+          <button class="timer-btn start" id="startTimer">
+            <i class="fas fa-play"></i> Start
+          </button>
+          <button class="timer-btn pause" id="pauseTimer" disabled>
+            <i class="fas fa-pause"></i> Pause
+          </button>
+          <button class="timer-btn reset" id="resetTimer">
+            <i class="fas fa-redo"></i> Reset
+          </button>
+        </div>
+        <div class="timer-settings">
+          <button class="time-option active" data-time="25">25 min</button>
+          <button class="time-option" data-time="15">15 min</button>
+          <button class="time-option" data-time="5">5 min</button>
+          <button class="time-option" data-time="10">10 min</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
