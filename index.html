@@ -914,16 +914,27 @@
                 <span class="tech-tag">Responsive Design</span>
               </div>
               <div class="project-links">
-                <a href="Weather App/Index.html" class="project-link">
+                <a
+                  href="https://wheather2-app.vercel.app/"
+                  class="project-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <i class="fas fa-external-link-alt"></i> Live Demo
                 </a>
-                <a href="#" class="project-link">
+                <a
+                  href="https://github.com/obinnajoshua185-star/wheather2"
+                  class="project-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <i class="fab fa-github"></i> Source Code
                 </a>
               </div>
             </div>
           </div>
 
+          <!-- Productivity Dashboard -->
           <div class="project-card">
             <div class="project-image">
               <img
@@ -948,14 +959,18 @@
               </div>
               <div class="project-links">
                 <a
-                  href="productivity-dashboard/index.html"
+                  href="https://productivity-dashboard-navy.vercel.app/"
                   class="project-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <i class="fas fa-external-link-alt"></i> Live Demo
                 </a>
                 <a
                   href="https://github.com/obinnajoshua185-star/productivity-dashboard"
                   class="project-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <i class="fab fa-github"></i> Source Code
                 </a>
@@ -984,12 +999,19 @@
                 <span class="tech-tag">Bootstrap</span>
               </div>
               <div class="project-links">
-                <a href="Readfile/Quoteapi/Quote.html" class="project-link">
+                <a
+                  href="https://quotes-321.vercel.app/"
+                  class="project-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <i class="fas fa-external-link-alt"></i> Live Demo
                 </a>
                 <a
-                  href="https://github.com/obinnajoshua185-star/portfolio/blob/main/Readfile/Quoteapi/Quote.html"
+                  href="https://github.com/obinnajoshua185-star/Quotes"
                   class="project-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <i class="fab fa-github"></i> Source Code
                 </a>
@@ -1196,6 +1218,98 @@
     </footer>
 
     <script>
+      // ============================================
+      // URL FIXER SCRIPT - Ensures all project links are correct
+      // ============================================
+      document.addEventListener("DOMContentLoaded", function () {
+        console.log("=== URL Fixer Script Activated ===");
+
+        // Define correct URLs for each project
+        const correctURLs = {
+          weather: {
+            liveDemo: "https://wheather2-app.vercel.app/",
+            sourceCode: "https://github.com/obinnajoshua185-star/wheather2",
+          },
+          productivity: {
+            liveDemo: "https://productivity-dashboard-navy.vercel.app/",
+            sourceCode:
+              "https://github.com/obinnajoshua185-star/productivity-dashboard",
+          },
+          quote: {
+            liveDemo: "https://quotes-321.vercel.app/",
+            sourceCode: "https://github.com/obinnajoshua185-star/Quotes",
+          },
+        };
+
+        // Fix all project links
+        const projectLinks = document.querySelectorAll(".project-link");
+        projectLinks.forEach((link) => {
+          const linkText = link.textContent.toLowerCase();
+          const href = link.getAttribute("href");
+
+          console.log("Checking link:", linkText, "Current href:", href);
+
+          // Determine which project this link belongs to
+          let projectType = "";
+          if (linkText.includes("weather") || href.includes("wheather")) {
+            projectType = "weather";
+          } else if (
+            linkText.includes("productivity") ||
+            href.includes("productivity")
+          ) {
+            projectType = "productivity";
+          } else if (linkText.includes("quote") || href.includes("quote")) {
+            projectType = "quote";
+          }
+
+          // Fix the URL if we identified the project
+          if (projectType && correctURLs[projectType]) {
+            if (
+              linkText.includes("live demo") ||
+              linkText.includes("external")
+            ) {
+              link.href = correctURLs[projectType].liveDemo;
+              console.log(
+                "Fixed Live Demo for",
+                projectType,
+                "to:",
+                correctURLs[projectType].liveDemo
+              );
+            } else if (
+              linkText.includes("source code") ||
+              linkText.includes("github")
+            ) {
+              link.href = correctURLs[projectType].sourceCode;
+              console.log(
+                "Fixed Source Code for",
+                projectType,
+                "to:",
+                correctURLs[projectType].sourceCode
+              );
+            }
+
+            // Always add target="_blank" and rel attributes
+            link.setAttribute("target", "_blank");
+            link.setAttribute("rel", "noopener noreferrer");
+          }
+        });
+
+        console.log("=== URL Fixing Complete ===");
+
+        // Log all fixed links for verification
+        setTimeout(() => {
+          console.log("=== VERIFICATION ===");
+          projectLinks.forEach((link, index) => {
+            console.log(
+              `Link ${index + 1}:`,
+              link.textContent.trim(),
+              "->",
+              link.href
+            );
+          });
+        }, 100);
+      });
+
       // Mobile menu toggle
       const menuToggle = document.getElementById("menu-toggle");
       const navbar = document.getElementById("navbar");
