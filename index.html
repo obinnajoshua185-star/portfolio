@@ -12,764 +12,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
-    <style>
-      :root {
-        --primary: #4f46e5;
-        --primary-light: #6366f1;
-        --primary-dark: #4338ca;
-        --secondary: #0f172a;
-        --light: #f8fafc;
-        --gray: #64748b;
-        --gray-light: #e2e8f0;
-        --accent: #f59e0b;
-        --transition: all 0.3s ease;
-        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-          0 2px 4px -1px rgba(0, 0, 0, 0.06);
-        --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-          0 4px 6px -2px rgba(0, 0, 0, 0.05);
-      }
-
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      html {
-        font-size: 62.5%;
-        scroll-behavior: smooth;
-      }
-
-      body {
-        font-family: "Inter", sans-serif;
-        font-size: 1.6rem;
-        line-height: 1.6;
-        color: var(--secondary);
-        background-color: #f9fafb;
-        overflow-x: hidden;
-      }
-
-      h1,
-      h2,
-      h3,
-      h4 {
-        font-family: "Space Grotesk", sans-serif;
-        font-weight: 600;
-        line-height: 1.2;
-      }
-
-      .container {
-        width: 100%;
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 2rem;
-      }
-
-      section {
-        padding: 8rem 0;
-      }
-
-      .section-title {
-        font-size: 3.2rem;
-        text-align: center;
-        margin-bottom: 5rem;
-        position: relative;
-      }
-
-      .section-title::after {
-        content: "";
-        position: absolute;
-        bottom: -1rem;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 6rem;
-        height: 0.4rem;
-        background: var(--primary);
-        border-radius: 2px;
-      }
-
-      .btn {
-        display: inline-block;
-        padding: 1.2rem 2.8rem;
-        background-color: var(--primary);
-        color: white;
-        border-radius: 0.6rem;
-        font-weight: 600;
-        text-decoration: none;
-        transition: var(--transition);
-        border: none;
-        cursor: pointer;
-        font-size: 1.6rem;
-      }
-
-      .btn:hover {
-        background-color: var(--primary-dark);
-        transform: translateY(-3px);
-        box-shadow: var(--shadow-lg);
-      }
-
-      .btn-outline {
-        background-color: transparent;
-        border: 2px solid var(--primary);
-        color: var(--primary);
-      }
-
-      .btn-outline:hover {
-        background-color: var(--primary);
-        color: white;
-      }
-
-      /* Header */
-      header {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        background-color: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(10px);
-        z-index: 1000;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        padding: 1.5rem 0;
-      }
-
-      .header-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .logo {
-        font-family: "Space Grotesk", sans-serif;
-        font-size: 2.4rem;
-        font-weight: 700;
-        color: var(--secondary);
-        text-decoration: none;
-      }
-
-      .logo span {
-        color: var(--primary);
-      }
-
-      nav {
-        display: flex;
-        gap: 3rem;
-      }
-
-      nav a {
-        color: var(--secondary);
-        text-decoration: none;
-        font-weight: 500;
-        font-size: 1.6rem;
-        transition: var(--transition);
-        position: relative;
-      }
-
-      nav a::after {
-        content: "";
-        position: absolute;
-        bottom: -5px;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background-color: var(--primary);
-        transition: var(--transition);
-      }
-
-      nav a:hover::after,
-      nav a.active::after {
-        width: 100%;
-      }
-
-      nav a:hover,
-      nav a.active {
-        color: var(--primary);
-      }
-
-      .menu-toggle {
-        display: none;
-        font-size: 2.4rem;
-        cursor: pointer;
-        color: var(--secondary);
-      }
-
-      /* Hero Section */
-      .hero {
-        padding-top: 12rem;
-        padding-bottom: 8rem;
-        background: linear-gradient(135deg, #f0f4ff 0%, #f8fafc 100%);
-        position: relative;
-        overflow: hidden;
-      }
-
-      .hero::before {
-        content: "";
-        position: absolute;
-        top: -10rem;
-        right: -10rem;
-        width: 40rem;
-        height: 40rem;
-        background-color: rgba(79, 70, 229, 0.05);
-        border-radius: 50%;
-      }
-
-      .hero-content {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 6rem;
-        align-items: center;
-      }
-
-      .hero-text h1 {
-        font-size: 4.2rem;
-        margin-bottom: 1.5rem;
-        color: var(--secondary);
-      }
-
-      .hero-text h1 span {
-        color: var(--primary);
-      }
-
-      .hero-text .subtitle {
-        font-size: 2rem;
-        color: var(--gray);
-        margin-bottom: 2.5rem;
-        font-weight: 400;
-      }
-
-      .hero-text p {
-        font-size: 1.7rem;
-        color: var(--gray);
-        margin-bottom: 3rem;
-        max-width: 500px;
-      }
-
-      .hero-buttons {
-        display: flex;
-        gap: 1.5rem;
-        margin-bottom: 3rem;
-      }
-
-      .hero-image {
-        position: relative;
-      }
-
-      .profile-container {
-        width: 35rem;
-        height: 35rem;
-        border-radius: 50%;
-        overflow: hidden;
-        border: 8px solid white;
-        box-shadow: var(--shadow-lg);
-        margin: 0 auto;
-      }
-
-      .profile-container img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-
-      /* Skills Section */
-      .skills {
-        background-color: white;
-      }
-
-      .skills-container {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 6rem;
-        align-items: start;
-      }
-
-      .skills-intro h3 {
-        font-size: 2.8rem;
-        margin-bottom: 2rem;
-      }
-
-      .skills-intro p {
-        color: var(--gray);
-        margin-bottom: 2.5rem;
-      }
-
-      .skills-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 2rem;
-      }
-
-      .skill-item {
-        background-color: #f8fafc;
-        padding: 2.5rem;
-        border-radius: 1rem;
-        transition: var(--transition);
-        border: 1px solid var(--gray-light);
-      }
-
-      .skill-item:hover {
-        transform: translateY(-5px);
-        box-shadow: var(--shadow-lg);
-        border-color: var(--primary-light);
-      }
-
-      .skill-icon {
-        font-size: 3rem;
-        color: var(--primary);
-        margin-bottom: 1.5rem;
-      }
-
-      .skill-item h4 {
-        font-size: 1.8rem;
-        margin-bottom: 1rem;
-      }
-
-      .skill-item p {
-        color: var(--gray);
-        font-size: 1.5rem;
-      }
-
-      /* Projects Section */
-      .projects {
-        background-color: #f0f4ff;
-      }
-
-      .projects-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-        gap: 3rem;
-      }
-
-      .project-card {
-        background-color: white;
-        border-radius: 1rem;
-        overflow: hidden;
-        transition: var(--transition);
-        box-shadow: var(--shadow);
-      }
-
-      .project-card:hover {
-        transform: translateY(-10px);
-        box-shadow: var(--shadow-lg);
-      }
-
-      .project-image {
-        height: 20rem;
-        width: 100%;
-        overflow: hidden;
-      }
-
-      .project-image img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: var(--transition);
-      }
-
-      .project-card:hover .project-image img {
-        transform: scale(1.05);
-      }
-
-      .project-content {
-        padding: 2.5rem;
-      }
-
-      .project-title {
-        font-size: 2rem;
-        margin-bottom: 1rem;
-      }
-
-      .project-description {
-        color: var(--gray);
-        margin-bottom: 2rem;
-      }
-
-      .project-tech {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.8rem;
-        margin-bottom: 2rem;
-      }
-
-      .tech-tag {
-        background-color: #eef2ff;
-        color: var(--primary);
-        padding: 0.6rem 1.2rem;
-        border-radius: 2rem;
-        font-size: 1.3rem;
-        font-weight: 500;
-      }
-
-      .project-links {
-        display: flex;
-        gap: 1.5rem;
-      }
-
-      .project-link {
-        color: var(--primary);
-        font-weight: 500;
-        text-decoration: none;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        transition: var(--transition);
-      }
-
-      .project-link:hover {
-        gap: 1rem;
-      }
-
-      /* About Section */
-      .about {
-        background-color: white;
-      }
-
-      .about-content {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 6rem;
-        align-items: center;
-      }
-
-      .about-text h3 {
-        font-size: 2.8rem;
-        margin-bottom: 2rem;
-      }
-
-      .about-text p {
-        color: var(--gray);
-        margin-bottom: 2rem;
-      }
-
-      .experience-stats {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 2rem;
-      }
-
-      .stat {
-        text-align: center;
-        padding: 2.5rem;
-        background-color: #f8fafc;
-        border-radius: 1rem;
-        transition: var(--transition);
-      }
-
-      .stat:hover {
-        transform: translateY(-5px);
-        background-color: #eef2ff;
-      }
-
-      .stat-number {
-        font-size: 3.6rem;
-        font-weight: 700;
-        color: var(--primary);
-        margin-bottom: 0.5rem;
-      }
-
-      .stat-text {
-        color: var(--gray);
-        font-size: 1.5rem;
-      }
-
-      /* Contact Section */
-      .contact {
-        background-color: #f0f4ff;
-      }
-
-      .contact-container {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 6rem;
-      }
-
-      .contact-info h3 {
-        font-size: 2.8rem;
-        margin-bottom: 2rem;
-      }
-
-      .contact-info p {
-        color: var(--gray);
-        margin-bottom: 3rem;
-      }
-
-      .contact-details {
-        display: flex;
-        flex-direction: column;
-        gap: 2rem;
-      }
-
-      .contact-item {
-        display: flex;
-        align-items: center;
-        gap: 1.5rem;
-      }
-
-      .contact-icon {
-        width: 5rem;
-        height: 5rem;
-        background-color: white;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 2rem;
-        color: var(--primary);
-        box-shadow: var(--shadow);
-      }
-
-      .contact-detail h4 {
-        font-size: 1.8rem;
-        margin-bottom: 0.5rem;
-      }
-
-      .contact-detail p,
-      .contact-detail a {
-        color: var(--gray);
-        text-decoration: none;
-        transition: var(--transition);
-      }
-
-      .contact-detail a:hover {
-        color: var(--primary);
-      }
-
-      /* Clickable contact styles */
-      .clickable-contact {
-        color: var(--primary);
-        text-decoration: none;
-        transition: var(--transition);
-        border-bottom: 1px solid transparent;
-        padding-bottom: 2px;
-      }
-
-      .clickable-contact:hover {
-        color: var(--primary-dark);
-        border-bottom: 1px solid var(--primary);
-      }
-
-      .phone-numbers {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-      }
-
-      .phone-number {
-        color: var(--primary);
-        text-decoration: none;
-        transition: var(--transition);
-        border-bottom: 1px solid transparent;
-        padding-bottom: 2px;
-      }
-
-      .phone-number:hover {
-        color: var(--primary-dark);
-        border-bottom: 1px solid var(--primary);
-      }
-
-      .contact-form {
-        background-color: white;
-        padding: 3.5rem;
-        border-radius: 1rem;
-        box-shadow: var(--shadow);
-      }
-
-      .form-group {
-        margin-bottom: 2rem;
-      }
-
-      .form-group label {
-        display: block;
-        font-weight: 500;
-        margin-bottom: 0.8rem;
-      }
-
-      .form-control {
-        width: 100%;
-        padding: 1.2rem 1.5rem;
-        border: 1px solid var(--gray-light);
-        border-radius: 0.6rem;
-        font-family: "Inter", sans-serif;
-        font-size: 1.6rem;
-        transition: var(--transition);
-      }
-
-      .form-control:focus {
-        outline: none;
-        border-color: var(--primary);
-        box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
-      }
-
-      textarea.form-control {
-        min-height: 15rem;
-        resize: vertical;
-      }
-
-      /* Footer */
-      footer {
-        background-color: var(--secondary);
-        color: white;
-        padding: 5rem 0 2rem;
-      }
-
-      .footer-content {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        margin-bottom: 3rem;
-      }
-
-      .footer-logo {
-        font-family: "Space Grotesk", sans-serif;
-        font-size: 2.4rem;
-        font-weight: 700;
-        color: white;
-        margin-bottom: 2rem;
-      }
-
-      .footer-logo span {
-        color: var(--primary-light);
-      }
-
-      .footer-links {
-        display: flex;
-        gap: 3rem;
-        margin-bottom: 3rem;
-      }
-
-      .footer-links a {
-        color: #cbd5e1;
-        text-decoration: none;
-        transition: var(--transition);
-      }
-
-      .footer-links a:hover {
-        color: white;
-      }
-
-      .social-icons {
-        display: flex;
-        gap: 1.5rem;
-        margin-bottom: 3rem;
-      }
-
-      .social-icons a {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 4.5rem;
-        height: 4.5rem;
-        background-color: rgba(255, 255, 255, 0.1);
-        border-radius: 50%;
-        color: white;
-        font-size: 1.8rem;
-        transition: var(--transition);
-      }
-
-      .social-icons a:hover {
-        background-color: var(--primary);
-        transform: translateY(-3px);
-      }
-
-      .copyright {
-        color: #94a3b8;
-        font-size: 1.4rem;
-        padding-top: 2rem;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        width: 100%;
-        text-align: center;
-      }
-
-      /* Responsive Design */
-      @media (max-width: 991px) {
-        html {
-          font-size: 55%;
-        }
-
-        .hero-content,
-        .skills-container,
-        .about-content,
-        .contact-container {
-          grid-template-columns: 1fr;
-          gap: 5rem;
-        }
-
-        .hero-text {
-          text-align: center;
-        }
-
-        .hero-text p {
-          margin: 0 auto 3rem;
-        }
-
-        .hero-buttons {
-          justify-content: center;
-        }
-      }
-
-      @media (max-width: 768px) {
-        .menu-toggle {
-          display: block;
-        }
-
-        nav {
-          position: fixed;
-          top: 7rem;
-          left: 0;
-          width: 100%;
-          background-color: white;
-          flex-direction: column;
-          padding: 2rem;
-          box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-          transform: translateY(-100%);
-          opacity: 0;
-          visibility: hidden;
-          transition: var(--transition);
-          z-index: 999;
-        }
-
-        nav.active {
-          transform: translateY(0);
-          opacity: 1;
-          visibility: visible;
-        }
-
-        .skills-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .projects-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .experience-stats {
-          grid-template-columns: 1fr;
-        }
-      }
-
-      @media (max-width: 480px) {
-        .section-title {
-          font-size: 2.8rem;
-        }
-
-        .hero-text h1 {
-          font-size: 3.6rem;
-        }
-
-        .hero-buttons {
-          flex-direction: column;
-          align-items: center;
-        }
-
-        .profile-container {
-          width: 28rem;
-          height: 28rem;
-        }
-
-        .contact-form {
-          padding: 2.5rem;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <!-- Header -->
@@ -1072,8 +315,7 @@
         </div>
       </div>
     </section>
-
-    <!-- Contact Section - WITH FIXED EMAIL LINKS -->
+    <!-- Contact Section -->
     <section class="contact" id="contact">
       <div class="container">
         <h2 class="section-title">Get In Touch</h2>
@@ -1094,12 +336,25 @@
                 </div>
                 <div class="contact-detail">
                   <h4>Email</h4>
-                  <a
-                    href="mailto:obinnajoshua185@gmail.com"
-                    class="clickable-contact"
-                  >
-                    obinnajoshua185@gmail.com
-                  </a>
+                  <div class="email-actions">
+                    <span class="email-text">
+                      <i class="fas fa-envelope"></i> obinnajoshua185@gmail.com
+                    </span>
+                    <div class="contact-buttons">
+                      <button
+                        onclick="copyEmail()"
+                        class="contact-action-btn copy-btn"
+                      >
+                        <i class="fas fa-copy"></i> Copy
+                      </button>
+                      <button
+                        onclick="composeEmail()"
+                        class="contact-action-btn email-btn"
+                      >
+                        <i class="fas fa-paper-plane"></i> Compose
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
 
@@ -1108,17 +363,19 @@
                   <i class="fas fa-phone"></i>
                 </div>
                 <div class="contact-detail">
-                  <h4>Phone</h4>
+                  <h4>Phone & WhatsApp</h4>
                   <div class="phone-numbers">
-                    <a href="tel:+2348167561963" class="phone-number">
-                      +234 816 756 1963
-                    </a>
-                    <a href="tel:+2347077645054" class="phone-number">
-                      +234 707 764 5054
-                    </a>
-                    <a href="tel:+2348035004430" class="phone-number">
-                      +234 803 500 4430
-                    </a>
+                    <button onclick="openWhatsApp()" class="whatsapp-btn">
+                      <i class="fab fa-whatsapp"></i> Send WhatsApp Message
+                    </button>
+                    <div class="phone-links">
+                      <a href="tel:+2348167561963" class="phone-link">
+                        <i class="fas fa-phone-alt"></i> Call: +234 816 756 1963
+                      </a>
+                      <a href="tel:+2347077645054" class="phone-link">
+                        <i class="fas fa-phone-alt"></i> Call: +234 707 764 5054
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -1135,60 +392,116 @@
             </div>
           </div>
 
+          <!-- DUAL-OPTION CONTACT FORM -->
           <div class="contact-form">
             <form id="contactForm">
+              <!-- Hidden field for Formspree subject -->
+              <input
+                type="hidden"
+                name="_subject"
+                value="New Portfolio Message"
+              />
+              <input type="text" name="_gotcha" style="display: none" />
+
               <div class="form-group">
-                <label for="name">Your Name</label>
+                <label for="name">Your Name *</label>
                 <input
                   type="text"
                   id="name"
+                  name="name"
                   class="form-control"
-                  placeholder="Enter your name"
+                  placeholder="Enter your full name"
                   required
+                  minlength="2"
                 />
+                <div class="form-hint">
+                  Required - How should I address you?
+                </div>
               </div>
 
               <div class="form-group">
-                <label for="email">Your Email</label>
+                <label for="email">Your Email *</label>
                 <input
                   type="email"
                   id="email"
+                  name="email"
                   class="form-control"
-                  placeholder="Enter your email"
+                  placeholder="Enter your email address"
                   required
                 />
+                <div class="form-hint">Required - I'll reply to this email</div>
               </div>
 
               <div class="form-group">
-                <label for="subject">Subject</label>
+                <label for="phone">Your Phone Number</label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  class="form-control"
+                  placeholder="Enter your phone number"
+                />
+                <div class="form-hint">
+                  Optional - For WhatsApp or faster response
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="subject">Subject *</label>
                 <input
                   type="text"
                   id="subject"
+                  name="subject"
                   class="form-control"
-                  placeholder="What is this regarding?"
+                  placeholder="What would you like to discuss?"
                   required
+                  minlength="5"
                 />
+                <div class="form-hint">
+                  Required - Brief description of your inquiry
+                </div>
               </div>
 
               <div class="form-group">
-                <label for="message">Your Message</label>
+                <label for="message">Your Message *</label>
                 <textarea
                   id="message"
+                  name="message"
                   class="form-control"
                   placeholder="Hi Joshua, I'd like to talk about..."
+                  rows="5"
                   required
+                  minlength="20"
                 ></textarea>
+                <div class="form-hint">Required - Please provide details</div>
               </div>
 
-              <button type="submit" class="btn" style="width: 100%">
-                Send Message
-              </button>
+              <!-- Form Status Messages -->
+              <div id="form-status" class="form-status"></div>
+
+              <!-- DUAL BUTTONS -->
+              <div class="dual-buttons">
+                <button type="button" id="sendEmailBtn" class="btn btn-email">
+                  <i class="fas fa-envelope"></i> Send via Email
+                </button>
+                <button
+                  type="button"
+                  id="sendWhatsAppBtn"
+                  class="btn btn-whatsapp"
+                >
+                  <i class="fab fa-whatsapp"></i> Send via WhatsApp
+                </button>
+              </div>
+
+              <p class="form-note">
+                <i class="fas fa-shield-alt"></i> Email messages are secure and
+                go directly to my inbox.
+              </p>
             </form>
           </div>
         </div>
       </div>
     </section>
-
     <!-- Footer -->
     <footer>
       <div class="container">
@@ -1244,75 +557,6 @@
       </div>
     </footer>
 
-    <script>
-      // Mobile menu toggle
-      const menuToggle = document.getElementById("menu-toggle");
-      const navbar = document.getElementById("navbar");
-
-      menuToggle.addEventListener("click", () => {
-        navbar.classList.toggle("active");
-      });
-
-      // Close mobile menu when clicking a link
-      const navLinks = document.querySelectorAll("nav a");
-      navLinks.forEach((link) => {
-        link.addEventListener("click", () => {
-          navbar.classList.remove("active");
-        });
-      });
-
-      // Smooth scrolling for anchor links
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-          e.preventDefault();
-
-          const targetId = this.getAttribute("href");
-          if (targetId === "#") return;
-
-          const targetElement = document.querySelector(targetId);
-          if (targetElement) {
-            window.scrollTo({
-              top: targetElement.offsetTop - 80,
-              behavior: "smooth",
-            });
-          }
-        });
-      });
-
-      // Contact form submission
-      const contactForm = document.getElementById("contactForm");
-      if (contactForm) {
-        contactForm.addEventListener("submit", function (e) {
-          e.preventDefault();
-
-          // In a real application, you would send this data to a server
-          // For now, we'll just show an alert
-          alert("Thank you for your message! I'll get back to you soon.");
-          this.reset();
-        });
-      }
-
-      // Add active class to nav links based on scroll position
-      window.addEventListener("scroll", () => {
-        const sections = document.querySelectorAll("section");
-        const navLinks = document.querySelectorAll("nav a");
-
-        let current = "";
-        sections.forEach((section) => {
-          const sectionTop = section.offsetTop;
-          const sectionHeight = section.clientHeight;
-          if (scrollY >= sectionTop - 100) {
-            current = section.getAttribute("id");
-          }
-        });
-
-        navLinks.forEach((link) => {
-          link.classList.remove("active");
-          if (link.getAttribute("href") === `#${current}`) {
-            link.classList.add("active");
-          }
-        });
-      });
-    </script>
+    <script src="script.js"></script>
   </body>
 </html>
